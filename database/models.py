@@ -7,17 +7,17 @@ connect(db='Go-it_HW8', host="mongodb://localhost:27017")
 
 
 class Author(Document):
-    fullname = StringField(required=True, unique=True)
-    born_date = StringField(max_length=50)
-    born_location = StringField(max_length=150)
+    fullname = StringField(required=True)
+    born_date = StringField(max_length=100)
+    born_location = StringField()
     description = StringField()
     meta = {"collection": "authors"}
 
 
 class Quote(Document):
-    author = ReferenceField(Author, reverse_delete_rule=CASCADE)
-    tags = ListField(StringField(max_length=15))
-    quote = StringField()
+    author = ReferenceField(Author, required=True, reverse_delete_rule=CASCADE)
+    tags = ListField(StringField())
+    quote = StringField(required=True)
     meta = {"collection": "quotes"}
 
     def to_json(self, *args, **kwargs):
