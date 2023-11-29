@@ -1,0 +1,2 @@
+# QuoteScrapping
+BeautifulSoup and Scrapy
